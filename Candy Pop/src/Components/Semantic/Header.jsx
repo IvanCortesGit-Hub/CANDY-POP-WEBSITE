@@ -8,7 +8,6 @@ import Ubicacion from "../../assets/Icons/Ubicacion.png";
 
 
 const StyledHeader = styled.nav`
-  background-color: transparent;
   display: flex;
   flex-flow: row wrap;
   height: 5rem;
@@ -18,7 +17,7 @@ const StyledHeader = styled.nav`
   position: absolute;
   width: 100%;
   top: 1.2rem;
-  z-index: 3;
+  z-index: 10;
 `;
 
 const StyledLista = styled.ul`

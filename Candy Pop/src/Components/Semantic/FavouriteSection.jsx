@@ -50,13 +50,13 @@ const StyledGridDescription = styled.div`
 const StyleProductName = styled.h4`
   color: black;
   font-weight: bold;
-  font-size: 1.2 rem;
+  font-size: 1.05rem;
   text-transform: uppercase;
 `;
 
-const StyleProductPrice = styled.h5`
+const StyleProductPrice = styled.h4`
   color: #555555;
-  font-size: 1 rem;
+  font-size: 1rem;
   font-weight: 400;
 `;
 
