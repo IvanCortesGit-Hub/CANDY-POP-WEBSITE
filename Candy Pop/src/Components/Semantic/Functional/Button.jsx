@@ -18,10 +18,13 @@ const StyledButton = styled.button`
   &:hover {
     filter: brightness(85%);
   }
+  @media (max-width: 900px) {
+    left: ${(props) => (props.$sideButton === "center" ? "top: 50%; left: 50%; transform: translate(-50%,-50%)" : "auto")};
+    right: ${(props) => (props.$sideButton === "right" ? "35%" : "auto")};
+  }
 `;
 
 function Button({ $sideButton, scrollToCarrusel }) {
-
   return (
     <StyledButton onClick={scrollToCarrusel} $sideButton={$sideButton}>
       DESCUBRE MAS

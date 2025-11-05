@@ -4,13 +4,13 @@ import styled from "styled-components";
 const StyledFavouriteSection = styled.section`
   width: 100%;
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: column wrap;
   align-items: center;
 `;
 
 const StyledFavouriteTitleBoton = styled.ul`
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   list-style: none;
   justify-content: space-between;
   width: 90%;
@@ -45,6 +45,18 @@ const StyledGridProducts = styled.div`
   width: 80%;
   grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
   gap: 3rem;
+
+  @media (max-width: 900px) {
+    width: 80%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+
+  @media (max-width: 600px) {
+    width: 80%;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
 `;
 
 const StyledGridProduct = styled.div`

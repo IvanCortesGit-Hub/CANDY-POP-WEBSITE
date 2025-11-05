@@ -8,17 +8,24 @@ const StyledAboutSection = styled.section`
   flex-flow: row wrap;
   height: 90vh;
   justify-content: center;
-  margin: 2rem;
   gap: 2rem;
+  @media (max-width: 900px) {
+    height: auto; // En móvil deja que crezca naturalmente
+    margin: 1rem;
+  }
 `;
 
 const StyledInfo = styled.div`
   display: flex;
   flex-flow: column wrap;
   height: 100%;
-  width: 40%;
+  width: 48%;
   position: relative;
   cursor: pointer;
+  @media (max-width: 900px) {
+    width: 80%;
+    min-height: 18rem; // Altura mínima en móvil
+  }
 `;
 
 const StyledImg = styled.img`
@@ -37,10 +44,10 @@ const StyledTitle = styled.h3`
   color: whitesmoke;
   position: absolute;
   text-align: center;
-  width: auto;
-  height: auto;
+  width: 80%;
   top: 50%;
-  left: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-shadow: 0px 0px 1.5rem rgba(0, 0, 0, 0.8);
 `;
 
@@ -53,7 +60,7 @@ function AboutSection() {
       </StyledInfo>
       <StyledInfo>
         <StyledImg src={DulcesVitrina} />
-        <StyledTitle>RESENAS DE NUESTROS USUSARIOS</StyledTitle>
+        <StyledTitle>RESEÑAS DE NUESTROS USUSARIOS</StyledTitle>
       </StyledInfo>
     </StyledAboutSection>
   );

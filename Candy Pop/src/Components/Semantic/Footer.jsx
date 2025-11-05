@@ -9,7 +9,12 @@ const StyledFooterSection = styled.footer`
   background-color: #1a1a1a;
   color: white;
   font-weight: bold;
+  gap: 1rem;
   font-family: Georgia, "Times New Roman", Times, serif;
+  @media(max-width: 900px){
+    flex-flow: column wrap;
+    align-items: center;
+  }
 `;
 
 const StyledFooterPart = styled.div`
@@ -17,7 +22,10 @@ const StyledFooterPart = styled.div`
   flex-flow: column wrap;
   justify-content: center;
   align-items: center;
-  width: 33%;
+  width: 32%;
+  @media(max-width: 900px){
+    width: 100%;
+  }
 `;
 
 const StyledFooterList = styled.ul`
@@ -25,7 +33,6 @@ const StyledFooterList = styled.ul`
   flex-flow: column wrap;
   gap: 2rem;
   list-style: none;
-  
 `;
 
 const StyledFooterImg = styled.img`
@@ -34,6 +41,9 @@ const StyledFooterImg = styled.img`
   padding: 2rem;
   border-radius: 4rem;
   cursor: pointer;
+  @media(max-width: 900px){
+    width: 60%;
+  }
 `;
 
 const StyledFooterForm = styled.form`
@@ -41,12 +51,12 @@ const StyledFooterForm = styled.form`
   flex-direction: column;
   margin: 2rem auto;
   /* Definir un ancho manejable para escritorio */
-  width: 90%;
-  max-width: 600px;
+  max-width: 90%;
+
 
   padding: 2rem;
   color: white;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
 `;
 

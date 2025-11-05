@@ -17,16 +17,40 @@ const StyledHeader = styled.nav`
   width: 100%;
   top: 1.2rem;
   z-index: 10;
+   // ✅ Añade padding para evitar que toque los bordes
+
+  @media (max-width: 900px) {
+    background-color: white;
+    top: 0;
+    position: sticky;
+  
+  }
 `;
 
 const StyledLista = styled.ul`
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: left;
   align-items: center;
   list-style: none;
   gap: 1rem;
   margin: 0 2rem;
+
+  @media (max-width: 900px) {
+    gap: 0.5rem; // ✅ Reduce gap en móvil
+
+    &:last-of-type {
+      display: none;
+      gap: 0.3rem; // ✅ Gap aún más pequeño para iconos derechos
+    }
+  }
+
+  @media (max-width: 600px) {
+    // ✅ Oculta botones de texto en móvil, solo deja logo
+    li:has(button) {
+      display: none;
+    }
+  }
 `;
 
 const StyledItem = styled.img`
@@ -34,6 +58,10 @@ const StyledItem = styled.img`
   height: 2rem;
   object-fit: contain;
   cursor: pointer;
+  @media (max-width: 900px) {
+    width: 1.5rem; // ✅ Iconos más pequeños en móvil
+    height: 1.5rem;
+  }
 `;
 
 const StyledButtonHeader = styled.button`
@@ -46,6 +74,8 @@ const StyledButtonHeader = styled.button`
   transition: color 0.3s ease-in-out;
   position: relative;
   transition: color 0.3s ease-in-out;
+  white-space: nowrap; // ✅ Evita que el texto se parta en varias líneas
+
   padding: 0.5rem 0.25rem;
 
   &:hover {
@@ -128,7 +158,7 @@ function Header() {
       <StyledLista>
         <li>
           <StyledItem
-            onClick={() => openMenu('left')}
+            onClick={() => openMenu("left")}
             src={Hamburguesa}
             alt="Hamburguesa"
           />
@@ -138,7 +168,7 @@ function Header() {
             style={{ width: "10rem", height: "5rem" }}
             src={ImagenPrincipalLogoNav}
             alt="LOGO"
-            onClick={()=> window.location.reload()}
+            onClick={() => window.location.reload()}
           />
         </li>
         <li alt="GOMAS">
@@ -162,7 +192,7 @@ function Header() {
         </li>
         <li>
           <StyledItem
-            onClick={() => openMenu('right')}
+            onClick={() => openMenu("right")}
             src={CarritoCompras}
             alt="Carrito Compras"
           />

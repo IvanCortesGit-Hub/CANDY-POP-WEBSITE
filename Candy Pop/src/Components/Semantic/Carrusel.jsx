@@ -24,6 +24,7 @@ const StyledCarruselBarra = styled.div`
   width: 200%;
   animation: ${scroll} 20s linear infinite;
   gap: 3rem;
+  padding: 1.5rem 0;
   align-items: center;
 `;
 
@@ -33,17 +34,16 @@ const StyledCarruselLogo = styled.div`
 
 const StyledCarruselImg = styled.img`
   width: 100%;
-  height: 100%;
-  padding: 2rem;
-  object-fit: cover;
+  object-fit: contain;
   cursor: pointer;
+  
 `;
 
 function Carrusel({ logosCarrusel, carruselRef }) {
   const renderLogos = useMemo(() => {
     const newLogos = [...logosCarrusel, ...logosCarrusel];
-    return newLogos.map((logo) => (
-      <StyledCarruselLogo key={logo.id}>
+    return newLogos.map((logo, index) => (
+      <StyledCarruselLogo key={`${logo.id}-${index}`}>
         <StyledCarruselImg src={logo.src} alt={logo.alt} />
       </StyledCarruselLogo>
     ));

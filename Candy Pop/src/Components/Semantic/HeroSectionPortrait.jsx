@@ -25,14 +25,20 @@ const StyledPortrait = styled.div`
   color: white;
   text-align: ${props => props.$textAlign === 'left' ? 'left' : 'right'};
   animation: ${StyledEntrace} 1s ease 1;
+
+  @media(max-width: 900px){
+    bottom: 30%;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 function HeroSectionPortrait({$side, $textAlign}){
     return(
         <StyledPortrait $side={$side} $textAlign={$textAlign}>
-          <h1>TU PRÓXIMO ANTOJO COMIENZA AHORA.</h1>
+          <h1>{$textAlign === 'left'? 'TU PRÓXIMO ANTOJO COMIENZA AHORA.' : 'DESCUBRE TODOS NUESTROS DULCES MEXICANOS'}</h1>
           <h3>
-            Prepárate para una explosión de color y sabor diseñada solo para ti.
+            { $textAlign === 'left'? 'Prepárate para una explosión de color y sabor diseñada solo para ti.' : 'Vive el auténtico sabor de México con cada mordida.'}
           </h3>
         </StyledPortrait>
     )

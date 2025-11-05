@@ -4,13 +4,13 @@ const StyledMenu = styled.div`
   display: flex;
   flex-flow: column;
   min-width: 30vw;
-  height: 100vh; /* ✅ Cambia a 100vh */
+  height: 100%; /* ✅ Cambia a 100vh */
   position: fixed;
   z-index: 100;
   background-color: rgb(255, 244, 195);
   box-shadow: 0 0 0.5rem black;
   top: 0;
-  ${props => props.$sideMenu === 'left' ? 'left: -100%; transition: left 0.5s ease;' : 'right: -100%; transition: right 0.5s ease;'}
+  ${props => props.$sideMenu === 'left' ? 'left: -100%; transition: left 0.5s ease;' : 'right: -100%; transition: right 1s ease;'}
 
   &.open {
     ${props => props.$sideMenu === 'left' ? 'left: 0' : 'right: 0'}
