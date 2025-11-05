@@ -10,7 +10,7 @@ const StyledAboutSection = styled.section`
   justify-content: center;
   gap: 2rem;
   @media (max-width: 900px) {
-    height: auto; // En móvil deja que crezca naturalmente
+    height: auto; 
     margin: 1rem;
   }
 `;
@@ -24,7 +24,7 @@ const StyledInfo = styled.div`
   cursor: pointer;
   @media (max-width: 900px) {
     width: 80%;
-    min-height: 18rem; // Altura mínima en móvil
+    min-height: 18rem; 
   }
 `;
 

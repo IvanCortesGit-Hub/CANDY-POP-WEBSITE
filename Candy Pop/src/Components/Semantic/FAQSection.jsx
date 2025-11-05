@@ -40,7 +40,7 @@ const StyledFAQText = styled.h1`
   text-align: center;
 `;
 
-const StyledFAQAnswers = styled.details`
+const StyledFAQAnswers = styled.details` 
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
@@ -71,7 +71,7 @@ const StyledFAQSummary = styled.summary`
     transform: rotate(0deg);
   }
 
-  ${StyledFAQAnswers}[open] &::after {
+  ${StyledFAQAnswers}[open] &::after {   //ROTATE THE "<" DOWN
     transform: rotate(-90deg);
   }
 `;

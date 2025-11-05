@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-const StyledEntrace = keyframes`
+const StyledEntrace = keyframes`  //MOVEMENT DOWN WHEN STARTING PAGE
   0%{
     opacity: 0;
     transform: translateY(-1rem);

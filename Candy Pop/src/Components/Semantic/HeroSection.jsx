@@ -2,7 +2,7 @@ import styled from "styled-components";
 import HeroSectionPortrait from "./HeroSectionPortrait";
 import Button from "./Functional/Button";
 
-const StyledHeroSection = styled.section`
+const StyledHeroSection = styled.section`  
   position: relative;
   height: ${(props) => props.$sectionHeight};
   width: 100%;

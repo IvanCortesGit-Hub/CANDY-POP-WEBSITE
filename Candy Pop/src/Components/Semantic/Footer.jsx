@@ -50,10 +50,7 @@ const StyledFooterForm = styled.form`
   display: flex;
   flex-direction: column;
   margin: 2rem auto;
-  /* Definir un ancho manejable para escritorio */
   max-width: 90%;
-
-
   padding: 2rem;
   color: white;
   border-radius: 0.5rem;
@@ -69,31 +66,28 @@ const StyledFooterInfo = styled.div`
 `;
 
 const StyledFooterLabel = styled.label`
-  /* Usamos el color de texto oscuro */
   font-size: 0.9rem;
-  font-weight: 600; /* Semi-bold */
+  font-weight: 600;
   margin-bottom: 0.25rem;
 `;
 
 const StyledFooterInput = styled.input`
-  /* Ocupar el 100% del ancho del grupo */
   width: 100%;
-  padding: 0.75rem 0; /* Padding vertical para altura, padding horizontal para espacio */
+  padding: 0.75rem 0;
   border: none;
-  border-bottom: 2px solid #ddd; /* Estilo de línea por defecto */
-  background-color: transparent; /* Fondo transparente */
+  border-bottom: 2px solid #ddd; 
+  background-color: transparent;
   font-size: 1rem;
 
-  /* Estado de Foco (Focus) */
+  /* WHEN CLICKING ON THE INPUT, COLOR APPEARS */
   &:focus {
     outline: none;
-    /* Resaltar con un color de marca al hacer clic */
     border-bottom: 2px solid #e651e9ff;
   }
 `;
 
 const StyledButton = styled.button`
-  background-color: #a349a4; /* Color Púrpura/Rosa de tu logo */
+  background-color: #a349a4; 
   color: white;
   font-size: 1rem;
   font-weight: bold;
@@ -105,7 +99,7 @@ const StyledButton = styled.button`
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #c860c8; /* Un tono más claro para el hover */
+    background-color: #c860c8; 
   }
 `;
 

@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-const StyledMenu = styled.div`
+const StyledMenu = styled.div`  //MEUNU BARRAS LATERALES
   display: flex;
   flex-flow: column;
-  min-width: 30vw;
-  height: 100%; /* ✅ Cambia a 100vh */
+  min-width: 35vw;
+  height: 100%;
   position: fixed;
   z-index: 100;
   background-color: rgb(255, 244, 195);
@@ -14,6 +14,9 @@ const StyledMenu = styled.div`
 
   &.open {
     ${props => props.$sideMenu === 'left' ? 'left: 0' : 'right: 0'}
+  }
+  @media(max-width: 900px){
+    min-width: 40vw;
   }
 `;
 

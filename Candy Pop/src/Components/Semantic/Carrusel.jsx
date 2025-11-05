@@ -13,7 +13,7 @@ const StyledTitle = styled.h2`
   text-align: center;
 `;
 
-const scroll = keyframes`
+const scroll = keyframes`  //HORIZONTAL MOVEMENT CARRUSEL 
  0% {transform: translateX(0);}
  100% {transform: translateX(calc(-50% - 1rem));}
 `;
@@ -41,7 +41,7 @@ const StyledCarruselImg = styled.img`
 
 function Carrusel({ logosCarrusel, carruselRef }) {
   const renderLogos = useMemo(() => {
-    const newLogos = [...logosCarrusel, ...logosCarrusel];
+    const newLogos = [...logosCarrusel, ...logosCarrusel]; //NEW BAR WITH 2 TIMES LOGOS PRODUCTS
     return newLogos.map((logo, index) => (
       <StyledCarruselLogo key={`${logo.id}-${index}`}>
         <StyledCarruselImg src={logo.src} alt={logo.alt} />

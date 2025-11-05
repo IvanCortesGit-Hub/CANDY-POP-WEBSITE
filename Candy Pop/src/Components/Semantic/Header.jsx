@@ -1,13 +1,17 @@
+//COMPONENTS & HOOKS
 import styled from "styled-components";
+import BurguerMenu from "./Functional/BurguerMenu";
+import { useEffect, useRef, useState } from "react";
+
+// ICONS
 import Hamburguesa from "../../assets/Icons/Hamburguesa.png";
 import ImagenPrincipalLogoNav from "../../assets/Icons/ImagenPrincipalLogoNav.png";
 import Buscador from "../../assets/Icons/Buscador.png";
 import Persona from "../../assets/Icons/Persona.png";
 import CarritoCompras from "../../assets/Icons/CarritoCompras.png";
 import Ubicacion from "../../assets/Icons/Ubicacion.png";
-import { useEffect, useRef, useState } from "react";
-import BurguerMenu from "./Functional/BurguerMenu";
 
+//NAVBAR
 const StyledHeader = styled.nav`
   display: flex;
   flex-flow: row wrap;
@@ -17,16 +21,15 @@ const StyledHeader = styled.nav`
   width: 100%;
   top: 1.2rem;
   z-index: 10;
-   // ✅ Añade padding para evitar que toque los bordes
 
   @media (max-width: 900px) {
     background-color: white;
     top: 0;
     position: sticky;
-  
   }
 `;
 
+//2 LISTS
 const StyledLista = styled.ul`
   display: flex;
   flex-flow: row nowrap;
@@ -37,21 +40,24 @@ const StyledLista = styled.ul`
   margin: 0 2rem;
 
   @media (max-width: 900px) {
-    gap: 0.5rem; // ✅ Reduce gap en móvil
+    gap: 0.5rem;
 
     &:last-of-type {
+      //DISAPPEAR SECOND <UL> IF SCREEN IS TOO SMALL
       display: none;
-      gap: 0.3rem; // ✅ Gap aún más pequeño para iconos derechos
+      gap: 0.3rem;
     }
   }
 
   @media (max-width: 600px) {
-    // ✅ Oculta botones de texto en móvil, solo deja logo
+    //DISAPPEAR EVERYTHING EXCEPT LOGO AND BURGUER ICON
     li:has(button) {
       display: none;
     }
   }
 `;
+
+//ICONS
 
 const StyledItem = styled.img`
   width: 2rem;
@@ -59,10 +65,12 @@ const StyledItem = styled.img`
   object-fit: contain;
   cursor: pointer;
   @media (max-width: 900px) {
-    width: 1.5rem; // ✅ Iconos más pequeños en móvil
+    width: 1.5rem; //
     height: 1.5rem;
   }
 `;
+
+//GOMAS, CHOCOLATES, DETALLES
 
 const StyledButtonHeader = styled.button`
   border: none;
@@ -74,64 +82,60 @@ const StyledButtonHeader = styled.button`
   transition: color 0.3s ease-in-out;
   position: relative;
   transition: color 0.3s ease-in-out;
-  white-space: nowrap; // ✅ Evita que el texto se parta en varias líneas
-
+  white-space: nowrap;
   padding: 0.5rem 0.25rem;
 
   &:hover {
     color: white;
   }
 
-  /* 🚨 CLAVE 2: Estilo base de la barra (invisible por defecto) */
+  /* LINE UNDER ITEMS ON THE NAVBAR (LINE APPEARS AFTER MOUSEMOVE) */
   &::after {
     content: "";
     position: absolute;
-    bottom: 0; /* Empieza en la parte inferior del botón */
+    bottom: 0; /* STARTS UNDER THE ITEMS*/
     left: 0;
     width: 100%;
-    height: 2.5px; /* Altura de la barra */
-    background-color: #ffffffff; /* Color de tu marca (ej. púrpura/rosa) */
+    height: 2.5px; /* LINE'S HEIGHT */
+    background-color: #ffffffff;
 
-    /* Inicialmente la barra está invisible o fuera de vista */
-    transform: translateY(100%); /* Moverla 100% hacia abajo (invisible) */
-    opacity: 0; /* Hacerla transparente */
+    /* LINE IS INVISIBLE IN THE BEGINNING */
+    transform: translateY(100%);
+    opacity: 0;
     transition: transform 0.3s ease-out, opacity 0.3s ease-out;
   }
 
-  /* 🚨 CLAVE 3: El efecto HOVER */
+  /* HOVER AFTER MOUSEMOVE */
   &:hover::after {
-    /* Deslizar hacia arriba SÓLO un poco, haciéndola visible */
     transform: translateY(
-      -5px
-    ); /* Desciende y se hace visible, apareciendo 5px más abajo del borde original */
-    opacity: 1; /* Hacerla visible */
+      -0.4rem
+    ); 
+    opacity: 1; 
   }
 `;
 
 function Header() {
-  const [menu, setMenu] = useState(false); //Saber si menu esta abierto o cerrado (Definir si abrir o cerrar menu navegacion)
-  const menuRef = useRef();
-  const [sideMenu, setSideMenu] = useState("left");
+  const [menu, setMenu] = useState(false); //MENU STATUS (OPEN / CLOSED)
+  const menuRef = useRef();  // REF TO THE SIDE MENU
+  const [sideMenu, setSideMenu] = useState("left");  //SIDE OF THE MENU (LEFT OR RIGHT)
 
-  const openMenu = (side) => {
-    setSideMenu(side); // ✅ Define el lado
-    setMenu(true); // ✅ Abre el menú
+  const openMenu = (side) => { //FUNCTION TO OPEN  THE MENU
+    setSideMenu(side); // Define the side
+    setMenu(true); // Open the menu 
   };
 
-  const checkESC = (event) => {
-    //Saber si usuario hace click en ESC para salir de navegacion
+  const checkESC = (event) => { //FUNCTION TO CLOSE THE MENU Y USERS PRESS 'ESC'
     if (event.key === "ESC" || event.key === "Escape") {
       setMenu(false);
     }
   };
 
-  const checkClick = (event) => {
-    //Saber si usuario hace click en otro lado afuera del menu
+  const checkClick = (event) => { //FUNCTION TO CLOSE THE MENU IF USERS PRESS OUTSIDE MENU
     if (!menuRef.current.contains(event.target)) setMenu(false);
   };
 
-  useEffect(() => {
-    //Cerrar el MENU si da ESC el usuario
+  useEffect(() => { //USEFFECT TO "LISTEN" Y USERS DOES CHECKESC FUNCTION
+    
     if (menu) {
       addEventListener("keydown", checkESC);
     }
@@ -141,8 +145,7 @@ function Header() {
     };
   }, [menu]);
 
-  useEffect(() => {
-    //Cerrar el MENU si el usuario da CLICK en algun otro lado
+  useEffect(() => { //USEFFECT TO "LISTEN" Y USERS DOES CHECKCLICK FUNCTION
     if (menu) {
       addEventListener("mousedown", checkClick);
     }

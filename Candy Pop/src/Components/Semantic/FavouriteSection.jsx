@@ -8,7 +8,7 @@ const StyledFavouriteSection = styled.section`
   align-items: center;
 `;
 
-const StyledFavouriteTitleBoton = styled.ul`
+const StyledFavouriteTitleBoton = styled.ul`  //LIST OF TITLE & BUTTON
   display: flex;
   flex-flow: row wrap;
   list-style: none;
@@ -20,7 +20,7 @@ const StyledFavouriteTitle = styled.h2`
   text-align: center;
 `;
 
-const StyledFavouriteButton = styled.h2`
+const StyledFavouriteButton = styled.h2` //BUTTON TO SEE ALL THE PRODUCTS
   background-color: transparent;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
@@ -39,7 +39,7 @@ const StyledFavouriteButton = styled.h2`
     background-color: #000000ff; /* Color de tu marca (ej. púrpura/rosa) */
 `;
 
-const StyledGridProducts = styled.div`
+const StyledGridProducts = styled.div` //GRID WITH FAVOURITE PRODUCTS
   box-sizing: border-box;
   display: grid;
   width: 80%;
@@ -59,7 +59,7 @@ const StyledGridProducts = styled.div`
   }
 `;
 
-const StyledGridProduct = styled.div`
+const StyledGridProduct = styled.div`  //PRODUCT
   display: flex;
   flex-flow: column;
   width: 100%;
