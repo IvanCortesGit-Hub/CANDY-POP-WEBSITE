@@ -22,12 +22,13 @@ const StyledFAQuestions = styled.div`
   align-content: center;
   gap: 2rem;
   width: 40%;
+   color: black;
 `;
 
 const StyledFAQText = styled.h1`
-  color: #3d3d3d;
   text-align: center;
 `;
+
 
 const StyledFAQAnswers = styled.details`
   display: flex;
@@ -47,7 +48,6 @@ const StyledFAQSummary = styled.summary`
   align-items: center;
   padding: 1rem 0;
   font-weight: bold;
-  color: #3d3d3d;
   width: 100%;
   font-size: 1.2rem;
 

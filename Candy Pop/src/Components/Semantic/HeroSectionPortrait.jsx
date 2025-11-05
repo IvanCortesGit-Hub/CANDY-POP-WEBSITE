@@ -1,4 +1,16 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const StyledEntrace = keyframes`
+  0%{
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+`;
 
 const StyledPortrait = styled.div`
   display: flex;
@@ -12,6 +24,7 @@ const StyledPortrait = styled.div`
   max-width: 28rem;
   color: white;
   text-align: ${props => props.$textAlign === 'left' ? 'left' : 'right'};
+  animation: ${StyledEntrace} 1s ease 1;
 `;
 
 function HeroSectionPortrait({$side, $textAlign}){

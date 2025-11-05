@@ -25,6 +25,7 @@ const StyledFooterList = styled.ul`
   flex-flow: column wrap;
   gap: 2rem;
   list-style: none;
+  
 `;
 
 const StyledFooterImg = styled.img`
@@ -103,6 +104,7 @@ function Footer() {
     <StyledFooterSection>
       <StyledFooterPart>
         <StyledFooterImg
+          onClick={() => window.location.reload()}
           src={CandyPop}
           alt="
                 Candy Pop"
@@ -110,15 +112,15 @@ function Footer() {
       </StyledFooterPart>
       <StyledFooterPart>
         <StyledFooterList style={{ textAlign: "center", fontSize: "1rem" }}>
-          <li>@CANDYPOP. All rights reserved</li>
-          <li>Politica</li>
-          <li>Condiciones</li>
-          <li>Accesibilidad</li>
-          <li>Cookies</li>
+          <li style={{cursor: 'pointer'}}>@CANDYPOP. All rights reserved</li>
+          <li style={{cursor: 'pointer'}}>Politica</li>
+          <li style={{cursor: 'pointer'}}>Condiciones</li>
+          <li style={{cursor: 'pointer'}}>Accesibilidad</li>
+          <li style={{cursor: 'pointer'}}>Cookies</li>
         </StyledFooterList>
       </StyledFooterPart>
       <StyledFooterPart>
-        <StyledFooterForm action="/submit-form" >
+        <StyledFooterForm action="/submit-form">
           <h3 style={{ textAlign: "center" }}>CONTACTANOS</h3>
           <h5>DEJANOS TUS DATOS Y MUY PRONTO TE CONTACTAREMOS!</h5>
           <StyledFooterInfo>

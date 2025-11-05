@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Whatsapp from "../../../assets/Icons/Whatsapp.png";
 import Instagram from "../../../assets/Icons/Instagram.png";
-import Telefono from "../../../assets/Icons/Telefono.png";
+import Email from "../../../assets/Icons/gmail.png";
 
 const StyledSocialContainer = styled.div`
   display: flex;
@@ -33,13 +33,25 @@ function SocialButtons() {
   return (
     <StyledSocialContainer>
       <StyledSocialButton>
-        <StyleSocialImage src={Whatsapp} />
+        <a target="__blank" href="https://wa.me/573193319407">
+          <StyleSocialImage src={Whatsapp} />
+        </a>
       </StyledSocialButton>
       <StyledSocialButton>
-        <StyleSocialImage src={Instagram} />
+        <a
+          target="__blank"
+          href="https://www.instagram.com/dulceria_candypop?igsh=MTFzaGtxbTJrazFtMQ=="
+        >
+          <StyleSocialImage src={Instagram} />
+        </a>
       </StyledSocialButton>
       <StyledSocialButton>
-        <StyleSocialImage src={Telefono} />
+        <a
+          target="__blank"
+          href="mailto:ivancortes3710@gmail.com"
+        >
+          <StyleSocialImage src={Email} />
+        </a>
       </StyledSocialButton>
     </StyledSocialContainer>
   );

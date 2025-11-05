@@ -17,8 +17,26 @@ const StyledFavouriteTitleBoton = styled.ul`
 `;
 
 const StyledFavouriteTitle = styled.h2`
-  color: #3d3d3d;
   text-align: center;
+`;
+
+const StyledFavouriteButton = styled.h2`
+  background-color: transparent;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+  position: relative;
+  transition: color 0.3s ease-in-out;
+  padding: 0.5rem 0.25rem;
+
+  /* 🚨 CLAVE 2: Estilo base de la barra (invisible por defecto) */
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0; /* Empieza en la parte inferior del botón */
+    left: 0;
+    width: 100%;
+    height: 0.2rem; /* Altura de la barra */
+    background-color: #000000ff; /* Color de tu marca (ej. púrpura/rosa) */
 `;
 
 const StyledGridProducts = styled.div`
@@ -38,6 +56,7 @@ const StyledGridProduct = styled.div`
 const StyledGridImg = styled.img`
   max-width: 100%;
   object-fit: contain;
+  cursor: pointer;
 `;
 
 const StyledGridDescription = styled.div`
@@ -48,14 +67,14 @@ const StyledGridDescription = styled.div`
 `;
 
 const StyleProductName = styled.h4`
-  color: black;
+  color: #2c2c2cff;
   font-weight: bold;
   font-size: 1.05rem;
   text-transform: uppercase;
 `;
 
 const StyleProductPrice = styled.h4`
-  color: #555555;
+  color: #222222ff;
   font-size: 1rem;
   font-weight: 400;
 `;
@@ -81,7 +100,7 @@ function FavouriteSection({ productosFavoritos }) {
           <StyledFavouriteTitle>FAVORITOS</StyledFavouriteTitle>
         </li>
         <li>
-          <StyledFavouriteTitle>Ver todos los productos</StyledFavouriteTitle>
+          <StyledFavouriteButton>Ver todos los productos</StyledFavouriteButton>
         </li>
       </StyledFavouriteTitleBoton>
       <StyledGridProducts>{renderProductosFavoritos}</StyledGridProducts>

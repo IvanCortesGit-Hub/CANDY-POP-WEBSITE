@@ -5,15 +5,14 @@ import Buscador from "../../assets/Icons/Buscador.png";
 import Persona from "../../assets/Icons/Persona.png";
 import CarritoCompras from "../../assets/Icons/CarritoCompras.png";
 import Ubicacion from "../../assets/Icons/Ubicacion.png";
-
+import { useEffect, useRef, useState } from "react";
+import BurguerMenu from "./Functional/BurguerMenu";
 
 const StyledHeader = styled.nav`
   display: flex;
   flex-flow: row wrap;
-  height: 5rem;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
   position: absolute;
   width: 100%;
   top: 1.2rem;
@@ -44,20 +43,102 @@ const StyledButtonHeader = styled.button`
   font-weight: 800;
   text-shadow: 1px 1px 1px rgba(133, 133, 133, 0.47);
   cursor: pointer;
+  transition: color 0.3s ease-in-out;
+  position: relative;
+  transition: color 0.3s ease-in-out;
+  padding: 0.5rem 0.25rem;
+
+  &:hover {
+    color: white;
+  }
+
+  /* 🚨 CLAVE 2: Estilo base de la barra (invisible por defecto) */
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0; /* Empieza en la parte inferior del botón */
+    left: 0;
+    width: 100%;
+    height: 2.5px; /* Altura de la barra */
+    background-color: #ffffffff; /* Color de tu marca (ej. púrpura/rosa) */
+
+    /* Inicialmente la barra está invisible o fuera de vista */
+    transform: translateY(100%); /* Moverla 100% hacia abajo (invisible) */
+    opacity: 0; /* Hacerla transparente */
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  }
+
+  /* 🚨 CLAVE 3: El efecto HOVER */
+  &:hover::after {
+    /* Deslizar hacia arriba SÓLO un poco, haciéndola visible */
+    transform: translateY(
+      -5px
+    ); /* Desciende y se hace visible, apareciendo 5px más abajo del borde original */
+    opacity: 1; /* Hacerla visible */
+  }
 `;
 
 function Header() {
+  const [menu, setMenu] = useState(false); //Saber si menu esta abierto o cerrado (Definir si abrir o cerrar menu navegacion)
+  const menuRef = useRef();
+  const [sideMenu, setSideMenu] = useState("left");
+
+  const openMenu = (side) => {
+    setSideMenu(side); // ✅ Define el lado
+    setMenu(true); // ✅ Abre el menú
+  };
+
+  const checkESC = (event) => {
+    //Saber si usuario hace click en ESC para salir de navegacion
+    if (event.key === "ESC" || event.key === "Escape") {
+      setMenu(false);
+    }
+  };
+
+  const checkClick = (event) => {
+    //Saber si usuario hace click en otro lado afuera del menu
+    if (!menuRef.current.contains(event.target)) setMenu(false);
+  };
+
+  useEffect(() => {
+    //Cerrar el MENU si da ESC el usuario
+    if (menu) {
+      addEventListener("keydown", checkESC);
+    }
+
+    return () => {
+      removeEventListener("keydown", checkESC);
+    };
+  }, [menu]);
+
+  useEffect(() => {
+    //Cerrar el MENU si el usuario da CLICK en algun otro lado
+    if (menu) {
+      addEventListener("mousedown", checkClick);
+    }
+
+    return () => {
+      removeEventListener("mousedown", checkClick);
+    };
+  }, [menu]);
+
   return (
     <StyledHeader>
+      <BurguerMenu menu={menu} menuRef={menuRef} $sideMenu={sideMenu} />
       <StyledLista>
         <li>
-          <StyledItem src={Hamburguesa} alt="Hamburguesa" />
+          <StyledItem
+            onClick={() => openMenu('left')}
+            src={Hamburguesa}
+            alt="Hamburguesa"
+          />
         </li>
         <li>
           <StyledItem
             style={{ width: "10rem", height: "5rem" }}
             src={ImagenPrincipalLogoNav}
             alt="LOGO"
+            onClick={()=> window.location.reload()}
           />
         </li>
         <li alt="GOMAS">
@@ -75,13 +156,21 @@ function Header() {
           <StyledItem src={Buscador} alt="Buscador" />
         </li>
         <li>
-          <StyledItem src={Persona} alt="Persona" />
+          <a>
+            <StyledItem src={Persona} alt="Persona" />
+          </a>
         </li>
         <li>
-          <StyledItem src={CarritoCompras} alt="Carrito Compras" />
+          <StyledItem
+            onClick={() => openMenu('right')}
+            src={CarritoCompras}
+            alt="Carrito Compras"
+          />
         </li>
         <li>
-          <StyledItem src={Ubicacion} alt="Ubicacion" />
+          <a href="https://maps.app.goo.gl/6bZePAEfgwNrpSDJ7" target="_blank">
+            <StyledItem src={Ubicacion} alt="Ubicacion" />
+          </a>
         </li>
       </StyledLista>
     </StyledHeader>

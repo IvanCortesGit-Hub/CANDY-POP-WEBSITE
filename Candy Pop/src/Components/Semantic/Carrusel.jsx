@@ -6,11 +6,11 @@ const StyledCarruselSection = styled.section`
   flex-flow: column nowrap;
   width: 100%;
   overflow: hidden;
+  margin: 2rem 0;
 `;
 
 const StyledTitle = styled.h2`
   text-align: center;
-  color: #3d3d3d;
 `;
 
 const scroll = keyframes`
@@ -23,7 +23,7 @@ const StyledCarruselBarra = styled.div`
   flex-flow: row nowrap;
   width: 200%;
   animation: ${scroll} 20s linear infinite;
-  gap: 2rem;
+  gap: 3rem;
   align-items: center;
 `;
 
@@ -33,11 +33,13 @@ const StyledCarruselLogo = styled.div`
 
 const StyledCarruselImg = styled.img`
   width: 100%;
-  height:100%;
+  height: 100%;
+  padding: 2rem;
   object-fit: cover;
+  cursor: pointer;
 `;
 
-function Carrusel({ logosCarrusel }) {
+function Carrusel({ logosCarrusel, carruselRef }) {
   const renderLogos = useMemo(() => {
     const newLogos = [...logosCarrusel, ...logosCarrusel];
     return newLogos.map((logo) => (
@@ -48,7 +50,7 @@ function Carrusel({ logosCarrusel }) {
   }, [logosCarrusel]);
 
   return (
-    <StyledCarruselSection>
+    <StyledCarruselSection ref={carruselRef}>
       <StyledTitle>PRINCIPALES MARCAS QUE MANEJAMOS</StyledTitle>
       <StyledCarruselBarra>{renderLogos}</StyledCarruselBarra>
     </StyledCarruselSection>

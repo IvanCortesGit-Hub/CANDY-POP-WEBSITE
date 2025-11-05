@@ -20,6 +20,7 @@ import Twix from "./assets/Productos/Twix.png";
 import KinderBueno from "./assets/Productos/KinderBueno.webp";
 import FAQSection from "./Components/Semantic/FAQSection.jsx";
 import Footer from "./Components/Semantic/Footer.jsx";
+import { useRef } from "react";
 
 const logosCarrusel = [
   { id: 1, src: DulceMM, alt: "m&m" },
@@ -29,17 +30,25 @@ const logosCarrusel = [
 ];
 
 const productosFavoritos = [
-  { id: 10, src: Twix, name: "Producto 1", price: 1000 },
-  { id: 20, src: KinderBueno, name: "Producto 2", price: 1000 },
-  { id: 30, src: JetCookies, name: "Producto 3", price: 1000 },
-  { id: 40, src: JumboMix, name: "Producto 4", price: 1000 },
-  { id: 50, src: GomasNanos, name: "Producto 5", price: 1000 },
-  { id: 60, src: Colmillos, name: "Producto 6", price: 1000 },
-  { id: 70, src: GomasBomBom, name: "Producto 7", price: 1000 },
-  { id: 80, src: Fresitas, name: "Producto 8", price: 1000 },
+  { id: 10, src: Twix, name: "Chocolatina Twix 85gr", price: '$7500' },
+  { id: 20, src: KinderBueno, name: "Kinder Bueno Relleno 43gr", price: '$9000' },
+  { id: 30, src: JetCookies, name: "Jet Cookies&Cream 50gr", price: '$7000' },
+  { id: 40, src: JumboMix, name: "Jumbo Mix 60gr", price: '$5000' },
+  { id: 50, src: GomasNanos, name: "Paquete Gomas Nanos 100gr", price: '$3500' },
+  { id: 60, src: Colmillos, name: "Colmillos 40gr", price: '$3000' },
+  { id: 70, src: GomasBomBom, name: "BON BON BUM Gomas 45gr", price: '$2500' },
+  { id: 80, src: Fresitas, name: "Fresitas Mini 25gr", price: '$2500' },
 ];
 
 function App() {
+  const scrollCarrusel = useRef()
+
+  const scrollToCarrusel =()=>{
+    scrollCarrusel.current.scrollIntoView({
+      behavior: 'smooth'
+    })
+  }
+
   return (
     <>
       <Header />
@@ -51,10 +60,11 @@ function App() {
           $side={"left"}
           $sideButton={"center"}
           $textAlign="left"
+          scrollToCarrusel={scrollToCarrusel}
         />
-        <Carrusel logosCarrusel={logosCarrusel} />
+        <Carrusel carruselRef={scrollCarrusel} logosCarrusel={logosCarrusel} />
         <FavouriteSection productosFavoritos={productosFavoritos} />
-        <HeroSection
+        <HeroSection $marginBottom ={true}
           showHeader={false}
           video={MexicanVideo}
           $sectionHeight={"80vh"}
