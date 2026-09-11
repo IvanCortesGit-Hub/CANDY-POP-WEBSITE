@@ -1,9 +1,19 @@
-export const App = ()=>{
+import { Outlet } from "react-router-dom";
+import { Navbar } from "./Navbar";
+import { Footer } from "./Footer";
+
+export const App = () => {
   return (
-
-    <h1>Hola</h1>
+    <>
+      <header>
+        <Navbar />
+      </header>
+      <main>
+        <Outlet />
+      </main>
+      <footer>
+        <Footer />
+      </footer>
+    </>
   );
-}
-
-
-
+};

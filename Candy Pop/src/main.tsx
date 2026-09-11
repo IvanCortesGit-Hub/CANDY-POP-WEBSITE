@@ -1,13 +1,8 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import {App} from './app/components/App.tsx'
+import { RouterProvider } from 'react-router-dom'
+import { router } from './app/components/Routes.tsx'
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+  <RouterProvider router={router}/>
 )
-
-
-//INSTALAR REACT ROUTER, MUI, MUI ICONS Y FONTS
